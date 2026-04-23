@@ -1,0 +1,41 @@
+/* pages/recipes/recipe-detail/recipe-detail.wxss */
+page { background: #F5F5F5; font-family: -apple-system, sans-serif; }
+.container { padding: 20rpx; }
+
+.check-banner {
+  border-radius: 16rpx; padding: 24rpx; display: flex; align-items: center; gap: 20rpx; margin-bottom: 20rpx;
+}
+.check-banner.green { background: #E8F5E9; border: 2rpx solid #4CAF50; }
+.check-banner.red { background: #FFEBEE; border: 2rpx solid #F44336; }
+.check-banner.yellow { background: #FFF8E1; border: 2rpx solid #FFC107; }
+.check-banner.default { background: #fff; border: 2rpx solid #eee; }
+.check-icon { font-size: 60rpx; }
+.check-title { font-size: 32rpx; font-weight: 700; color: #333; display: block; }
+.check-sub { font-size: 24rpx; color: #999; }
+
+.reason-box { background: #fff; border-radius: 16rpx; padding: 20rpx; margin-bottom: 20rpx; }
+.reason-item { font-size: 28rpx; color: #D32F2F; display: block; margin-bottom: 8rpx; }
+.warn-item { font-size: 28rpx; color: #F57C00; display: block; margin-bottom: 8rpx; }
+.rec-item { font-size: 28rpx; color: #388E3C; display: block; margin-bottom: 8rpx; }
+
+.section { background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 20rpx; }
+.section-title { font-size: 30rpx; font-weight: 700; color: #333; display: block; margin-bottom: 16rpx; }
+.desc { font-size: 28rpx; color: #666; line-height: 1.6; }
+
+.ingredient-list { display: flex; flex-direction: column; gap: 12rpx; }
+.ingredient-item { display: flex; justify-content: space-between; align-items: center; padding: 12rpx 0; border-bottom: 1rpx solid #f0f0f0; }
+.ingredient-item:last-child { border: none; }
+.ing-name { font-size: 28rpx; color: #333; display: flex; align-items: center; gap: 12rpx; }
+.allergen-badge { background: #FFEBEE; color: #D32F2F; border-radius: 8rpx; padding: 4rpx 10rpx; font-size: 22rpx; }
+.ing-amount { font-size: 26rpx; color: #999; }
+
+.nutrition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16rpx; }
+.n-row { background: #F5F5F5; border-radius: 12rpx; padding: 16rpx; display: flex; justify-content: space-between; font-size: 26rpx; }
+.n-row text:first-child { color: #999; }
+.n-row text:last-child { color: #333; font-weight: 600; }
+
+.steps-list { display: flex; flex-direction: column; gap: 16rpx; }
+.step-item { font-size: 28rpx; color: #555; line-height: 1.6; padding: 8rpx 0; }
+
+.tip-section { background: #FFF8E1; }
+.tip { font-size: 28rpx; color: #795548; line-height: 1.6; }

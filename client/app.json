@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/recipes/recipes",
+    "pages/recipes/recipe-detail/recipe-detail",
+    "pages/children/children",
+    "pages/children/add/add",
+    "pages/ingredient-detail/ingredient-detail",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF9800",
+    "navigationBarTitleText": "小孩菜",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF9800",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tab-home.png",
+        "selectedIconPath": "assets/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/recipes/recipes",
+        "text": "菜谱",
+        "iconPath": "assets/tab-recipe.png",
+        "selectedIconPath": "assets/tab-recipe-active.png"
+      },
+      {
+        "pagePath": "pages/children/children",
+        "text": "孩子",
+        "iconPath": "assets/tab-child.png",
+        "selectedIconPath": "assets/tab-child-active.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "记录",
+        "iconPath": "assets/tab-log.png",
+        "selectedIconPath": "assets/tab-log-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

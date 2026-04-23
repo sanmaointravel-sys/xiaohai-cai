@@ -1,0 +1,59 @@
+<!-- pages/children/add/add.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="page-title">添加孩子</text>
+  </view>
+
+  <view class="form">
+    <view class="form-item">
+      <text class="label">姓名 *</text>
+      <input class="input" placeholder="孩子姓名" value="{{form.name}}" bindinput="onInput" data-field="name" />
+    </view>
+
+    <view class="form-row">
+      <view class="form-item half">
+        <text class="label">性别</text>
+        <radio-group bindchange="onGenderChange">
+          <label><radio value="男" checked="{{form.gender === '男'}}" /> 男</label>
+          <label style="margin-left:40rpx"><radio value="女" checked="{{form.gender === '女'}}" /> 女</label>
+        </radio-group>
+      </view>
+      <view class="form-item half">
+        <text class="label">出生日期</text>
+        <picker mode="date" value="{{form.birthday}}" bindchange="onBirthdayChange">
+          <view class="picker-value">{{form.birthday || '选择日期'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">过敏原（可多选）</text>
+      <view class="chip-grid">
+        <view wx:for="{{allergyTypes}}" wx:key="id"
+              class="chip {{form.allergies.indexOf(item.id) !== -1 ? 'selected' : ''}}"
+              bindtap="toggleAllergy" data-id="{{item.id}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">不爱吃的食材</text>
+      <input class="input" placeholder="如：香菜、胡萝卜（逗号分隔）" value="{{form.dislikesText}}" bindinput="onInput" data-field="dislikesText" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">当前身体状态</text>
+      <picker mode="selector" range="{{illnesses}}" range-key="name" bindchange="onIllnessChange">
+        <view class="picker-value">{{selectedIllnessName || '无 / 跳过'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">备注</text>
+      <textarea class="textarea" placeholder="体质说明、其他注意事项" value="{{form.notes}}" bindinput="onInput" data-field="notes" />
+    </view>
+
+    <button class="submit-btn" bindtap="submit">保存</button>
+  </view>
+</view>

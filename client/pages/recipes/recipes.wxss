@@ -1,0 +1,36 @@
+/* pages/recipes/recipes.wxss */
+page { background: #FFF8F0; font-family: -apple-system, sans-serif; }
+.container { padding: 20rpx; }
+
+.search-bar {
+  background: #fff; border-radius: 50rpx; padding: 16rpx 30rpx;
+  margin-bottom: 20rpx; display: flex; align-items: center;
+}
+.search-input { font-size: 28rpx; flex: 1; color: #333; }
+
+.loading { text-align: center; padding: 80rpx; color: #999; }
+.recipe-count { font-size: 24rpx; color: #999; margin-bottom: 16rpx; }
+
+.recipe-list { display: flex; flex-direction: column; gap: 16rpx; }
+.recipe-card {
+  background: #fff; border-radius: 16rpx; padding: 24rpx;
+  display: flex; gap: 20rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+.card-left { flex-shrink: 0; }
+.card-right { flex: 1; overflow: hidden; }
+.recipe-icon {
+  width: 72rpx; height: 72rpx; border-radius: 16rpx;
+  background: linear-gradient(135deg, #FF9800, #FFB74D);
+  color: #fff; font-size: 36rpx; font-weight: bold;
+  display: flex; align-items: center; justify-content: center;
+}
+.recipe-name { font-size: 32rpx; font-weight: 600; color: #333; display: block; margin-bottom: 6rpx; }
+.recipe-desc { font-size: 24rpx; color: #999; display: block; margin-bottom: 10rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.recipe-tags { display: flex; gap: 12rpx; flex-wrap: wrap; margin-bottom: 8rpx; }
+.tag { font-size: 22rpx; padding: 4rpx 12rpx; border-radius: 50rpx; }
+.tag.age { background: #E3F2FD; color: #1976D2; }
+.tag.diff { background: #FFF3E0; color: #FF9800; }
+.tag.time { background: #F1F8E9; color: #558B2F; }
+.recipe-ing { font-size: 22rpx; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+
+.empty { text-align: center; padding: 100rpx; color: #999; }

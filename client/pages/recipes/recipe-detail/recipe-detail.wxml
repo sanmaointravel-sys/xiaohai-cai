@@ -1,0 +1,63 @@
+<!-- pages/recipes/recipe-detail/recipe-detail.wxml -->
+<view class="container" wx:if="{{recipe}}">
+  <!-- 适合性判断 -->
+  <view class="check-banner {{getCheckClass(type)}}">
+    <text class="check-icon">{{check && !check.suitable ? '🚫' : (check && check.warnings.length > 0 ? '⚠️' : '✅')}}</text>
+    <view class="check-info">
+      <text class="check-title">{{recipe.name}}</text>
+      <text class="check-sub">{{recipe.suitable_age}} · {{recipe.difficulty}} · {{recipe.cooking_time}}分钟</text>
+    </view>
+  </view>
+
+  <!-- 原因说明 -->
+  <view class="reason-box" wx:if="{{check}}">
+    <text wx:for="{{check.reasons}}" wx:key="index" class="reason-item">{{item}}</text>
+    <text wx:for="{{check.warnings}}" wx:key="index" class="warn-item">{{item}}</text>
+    <text wx:for="{{check.recommendations}}" wx:key="index" class="rec-item">{{item}}</text>
+  </view>
+
+  <!-- 简介 -->
+  <view class="section" wx:if="{{recipe.description}}">
+    <text class="section-title">简介</text>
+    <text class="desc">{{recipe.description}}</text>
+  </view>
+
+  <!-- 原料列表 -->
+  <view class="section">
+    <text class="section-title">🥗 原料 ({{recipe.ingredients.length}}种)</text>
+    <view class="ingredient-list">
+      <view wx:for="{{recipe.ingredients}}" wx:key="id" class="ingredient-item">
+        <view class="ing-name">
+          <text>{{item.ingredient_name}}</text>
+          <text wx:if="{{item.allergens}}" class="allergen-badge">{{item.allergens}}</text>
+        </view>
+        <text class="ing-amount">{{item.amount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 营养小计 -->
+  <view class="section">
+    <text class="section-title">📊 营养参考（每100g）</text>
+    <view class="nutrition-grid">
+      <view class="n-row"><text>蛋白质</text><text>{{recipe.ingredients[0] && recipe.ingredients[0].protein || '?'}}g</text></view>
+      <view class="n-row"><text>脂肪</text><text>{{recipe.ingredients[0] && recipe.ingredients[0].fat || '?'}}g</text></view>
+      <view class="n-row"><text>碳水</text><text>{{recipe.ingredients[0] && recipe.ingredients[0].carbohydrate || '?'}}g</text></view>
+      <view class="n-row"><text>热量</text><text>{{recipe.ingredients[0] && recipe.ingredients[0].calories || '?'}}kcal</text></view>
+    </view>
+  </view>
+
+  <!-- 步骤 -->
+  <view class="section" wx:if="{{recipe.steps}}">
+    <text class="section-title">👨‍🍳 做法步骤</text>
+    <view class="steps-list">
+      <text wx:for="{{recipe.steps}}" wx:key="index" class="step-item">{{index + 1}}. {{item}}</text>
+    </view>
+  </view>
+
+  <!-- 小贴士 -->
+  <view class="section tip-section" wx:if="{{recipe.tips}}">
+    <text class="section-title">💡 小贴士</text>
+    <text class="tip">{{recipe.tips}}</text>
+  </view>
+</view>

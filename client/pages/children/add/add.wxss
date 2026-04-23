@@ -1,0 +1,28 @@
+/* pages/children/add/add.wxss */
+page { background: #FFF8F0; font-family: -apple-system, sans-serif; }
+.container { padding: 30rpx; }
+.header { margin-bottom: 30rpx; }
+.page-title { font-size: 36rpx; font-weight: 600; color: #333; }
+
+.form { display: flex; flex-direction: column; gap: 30rpx; }
+.form-item { background: #fff; border-radius: 16rpx; padding: 24rpx; }
+.form-row { display: flex; gap: 20rpx; }
+.form-item.half { flex: 1; }
+.label { font-size: 28rpx; color: #666; display: block; margin-bottom: 12rpx; }
+.input { font-size: 30rpx; color: #333; margin-top: 8rpx; }
+.textarea { font-size: 30rpx; color: #333; height: 120rpx; width: 100%; margin-top: 8rpx; }
+
+.chip-grid { display: flex; flex-wrap: wrap; gap: 16rpx; margin-top: 12rpx; }
+.chip {
+  padding: 12rpx 24rpx; border-radius: 50rpx; font-size: 26rpx;
+  background: #f0f0f0; color: #666; border: 2rpx solid transparent;
+}
+.chip.selected { background: #FFF3E0; color: #FF9800; border-color: #FF9800; }
+
+.picker-value { font-size: 30rpx; color: #333; padding: 12rpx 0; }
+
+.submit-btn {
+  background: #FF9800; color: #fff; border: none; border-radius: 50rpx;
+  padding: 28rpx; font-size: 32rpx; text-align: center;
+}
+.submit-btn::after { border: none; }

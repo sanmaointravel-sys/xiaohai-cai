@@ -1,0 +1,79 @@
+<!-- pages/ingredient-detail/ingredient-detail.wxml -->
+<view class="container" wx:if="{{ingredient}}">
+  <view class="ingredient-header">
+    <text class="ing-name">{{ingredient.name}}</text>
+    <text class="ing-category">{{ingredient.category}}</text>
+  </view>
+
+  <!-- 过敏原警告 -->
+  <view class="warning-box" wx:if="{{ingredient.allergens}}">
+    <text class="warn-icon">⚠️</text>
+    <view class="warn-content">
+      <text class="warn-title">过敏原提示</text>
+      <text class="warn-text">{{ingredient.allergens}}</text>
+    </view>
+  </view>
+
+  <!-- 营养成分 -->
+  <view class="section">
+    <text class="section-title">📊 营养成分（每100g）</text>
+    <view class="nutrition-grid">
+      <view class="n-item">
+        <text class="n-val">{{ingredient.protein}}</text>
+        <text class="n-label">蛋白质(g)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.fat}}</text>
+        <text class="n-label">脂肪(g)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.carbohydrate}}</text>
+        <text class="n-label">碳水(g)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.calories}}</text>
+        <text class="n-label">热量(kcal)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.vitamin_a}}</text>
+        <text class="n-label">维A(μg)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.vitamin_c}}</text>
+        <text class="n-label">维C(mg)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.calcium}}</text>
+        <text class="n-label">钙(mg)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.iron}}</text>
+        <text class="n-label">铁(mg)</text>
+      </view>
+      <view class="n-item">
+        <text class="n-val">{{ingredient.zinc}}</text>
+        <text class="n-label">锌(mg)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 注意事项 -->
+  <view class="section" wx:if="{{ingredient.notes}}">
+    <text class="section-title">💡 喂养提示</text>
+    <text class="notes-text">{{ingredient.notes}}</text>
+  </view>
+
+  <!-- 难消化警告 -->
+  <view class="difficulty-box" wx:if="{{ingredient.is_difficult === 'Y'}}">
+    <text>⚠️ 孩子消化较困难，建议根据月龄适量添加</text>
+  </view>
+
+  <!-- 含此食材的菜谱 -->
+  <view class="section" wx:if="{{recipes.length > 0}}">
+    <text class="section-title">🍳 含此食材的菜谱</text>
+    <view wx:for="{{recipes}}" wx:key="id" class="recipe-item" bindtap="goToRecipe" data-id="{{item.id}}">
+      <text class="recipe-name">{{item.name}}</text>
+      <text class="recipe-meta">{{item.suitable_age}} · {{item.difficulty}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,88 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部孩子切换区 -->
+  <view class="child-header">
+    <view class="child-selector" bindtap="goToChildren">
+      <view class="child-avatar">
+        <text class="avatar-text">{{currentChild ? currentChild.name[0] : '+'}}</text>
+      </view>
+      <view class="child-info">
+        <text class="child-name">{{currentChild ? currentChild.name : '添加孩子'}}</text>
+        <text class="child-sub">{{currentChild ? (currentChild.allergies.length > 0 ? '有' + currentChild.allergies.length + '项过敏' : '无过敏') : '点击添加'}}</text>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+
+    <!-- 当前疾病状态 -->
+    <view wx:if="{{currentChild && currentChild.active_illness.length > 0}}" class="illness-banner">
+      <text wx:for="{{currentChild.active_illness}}" wx:key="index">🤒 {{item.illness_name}}</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <text>分析中...</text>
+  </view>
+
+  <!-- 无孩子 -->
+  <view wx:elif="{{!currentChild}}" class="empty-state">
+    <text class="empty-icon">👶</text>
+    <text class="empty-text">还没有添加孩子信息</text>
+    <button class="primary-btn" bindtap="goToChildren">立即添加</button>
+  </view>
+
+  <!-- 筛选结果 -->
+  <view wx:else class="results">
+    <!-- 能吃的 -->
+    <view class="section" wx:if="{{suitableRecipes.length > 0}}">
+      <view class="section-title">
+        <text class="title-icon green">✅</text>
+        <text class="title-text">可以吃 ({{suitableRecipes.length}}道)</text>
+      </view>
+      <view class="recipe-list">
+        <view wx:for="{{suitableRecipes}}" wx:key="id" class="recipe-card green-border"
+              bindtap="goToRecipe" data-id="{{item.id}}" data-type="suitable">
+          <text class="recipe-name">{{item.name}}</text>
+          <text class="recipe-meta">{{item.suitable_age}} · {{item.difficulty}} · {{item.cooking_time}}分钟</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 不爱吃的 -->
+    <view class="section" wx:if="{{cautionRecipes.length > 0}}">
+      <view class="section-title">
+        <text class="title-icon yellow">⚠️</text>
+        <text class="title-text">慎选 ({{cautionRecipes.length}}道)</text>
+      </view>
+      <view class="recipe-list">
+        <view wx:for="{{cautionRecipes}}" wx:key="id" class="recipe-card yellow-border"
+              bindtap="goToRecipe" data-id="{{item.id}}" data-type="caution">
+          <text class="recipe-name">{{item.name}}</text>
+          <text class="recipe-meta">{{item.suitable_age}} · {{item.difficulty}} · {{item.cooking_time}}分钟</text>
+          <text class="recipe-warn">{{item.check.warnings[0]}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 不能吃的 -->
+    <view class="section" wx:if="{{unsuitableRecipes.length > 0}}">
+      <view class="section-title">
+        <text class="title-icon red">🚫</text>
+        <text class="title-text">不能吃 ({{unsuitableRecipes.length}}道)</text>
+      </view>
+      <view class="recipe-list">
+        <view wx:for="{{unsuitableRecipes}}" wx:key="id" class="recipe-card red-border"
+              bindtap="goToRecipe" data-id="{{item.id}}" data-type="unsuitable">
+          <text class="recipe-name">{{item.name}}</text>
+          <text class="recipe-meta">{{item.suitable_age}} · {{item.difficulty}} · {{item.cooking_time}}分钟</text>
+          <text class="recipe-reason">{{item.check.reasons[0]}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部跳转 -->
+    <view class="footer-actions">
+      <button class="secondary-btn" bindtap="goToRecipes">查看全部菜谱</button>
+    </view>
+  </view>
+</view>

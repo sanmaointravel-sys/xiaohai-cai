@@ -1,0 +1,104 @@
+<!-- pages/children/children.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="page-title">👶 孩子管理</text>
+    <button class="add-btn" bindtap="openAddModal">+ 添加孩子</button>
+  </view>
+
+  <!-- 列表 -->
+  <view class="child-list">
+    <view wx:for="{{children}}" wx:key="id" class="child-card">
+      <view class="child-top" bindtap="selectChild" data-id="{{item.id}}">
+        <view class="avatar">{{item.name[0]}}</view>
+        <view class="info">
+          <text class="name">{{item.name}}</text>
+          <text class="meta">{{item.gender}} · {{item.birthday}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+
+      <!-- 过敏原 -->
+      <view class="tag-row" wx:if="{{item.allergies && item.allergies.length > 0}}">
+        <text class="tag allergy-tag">⚠️ {{item.allergies[0].name}}</text>
+        <text wx:if="{{item.allergies.length > 1}}" class="tag-more">+{{item.allergies.length-1}}项</text>
+      </view>
+
+      <!-- 疾病状态 -->
+      <view class="illness-row" wx:if="{{item.active_illness && item.active_illness.length > 0}}">
+        <text class="illness-text" wx:for="{{item.active_illness}}" wx:for-item="active" wx:key="index">
+          🤒 正在{{active.illness_name}}
+        </text>
+        <text class="clear-btn" bindtap="clearIllness" data-id="{{item.id}}">好了</text>
+      </view>
+
+      <!-- 快捷设置疾病 -->
+      <view class="quick-illness" wx:else>
+        <text class="quick-label">设置当前状态：</text>
+        <view class="quick-btns">
+          <button wx:for="{{illnesses}}" wx:key="id" wx:for-item="illness"
+                  bindtap="setIllness" data-child-id="{{item.id}}" data-illness-id="{{illness.id}}">
+            {{illness.name}}
+          </button>
+        </view>
+      </view>
+
+      <view class="card-footer">
+        <text class="delete-btn" bindtap="deleteChild" data-id="{{item.id}}">删除</text>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{children.length === 0}}" class="empty">
+      <text>👶 还没有孩子信息\n点击上方添加</text>
+    </view>
+  </view>
+
+  <!-- 添加弹窗 -->
+  <view wx:if="{{showAddModal}}" class="modal-mask" bindtap="closeModal">
+    <view class="modal" bindtap="stopProp">
+      <text class="modal-title">添加孩子</text>
+
+      <view class="form-item">
+        <text class="label">姓名 *</text>
+        <input class="input" placeholder="孩子姓名" data-field="name" value="{{form.name}}" bindinput="onFormInput" />
+      </view>
+
+      <view class="form-row">
+        <view class="form-item">
+          <text class="label">性别</text>
+          <radio-group data-field="gender" bindchange="onFormInput">
+            <label><radio value="男" checked="{{form.gender === '男'}}" /> 男</label>
+            <label><label style="margin-left:20rpx"><radio value="女" checked="{{form.gender === '女'}}" /> 女</label></label>
+          </radio-group>
+        </view>
+        <view class="form-item">
+          <text class="label">出生日期</text>
+          <input class="input" type="date" data-field="birthday" value="{{form.birthday}}" bindinput="onFormInput" />
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">过敏原（可多选）</text>
+        <view class="allergy-grid">
+          <view wx:for="{{allergyTypes}}" wx:key="id"
+                class="allergy-chip {{form.allergies.indexOf(item.id) !== -1 ? 'selected' : ''}}"
+                bindtap="toggleAllergy" data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">当前是否有身体不适？</text>
+        <picker mode="selector" range="{{illnesses}}" range-key="name" bindchange="onIllnessChange">
+          <view class="picker">{{form.illness ? (illnesses[form.illness-1] ? illnesses[form.illness-1].name : '选择疾病') : '无 / 跳过'}}</view>
+        </picker>
+      </view>
+
+      <view class="modal-actions">
+        <button class="cancel-btn" bindtap="closeModal">取消</button>
+        <button class="confirm-btn" bindtap="submitChild">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

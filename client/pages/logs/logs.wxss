@@ -1,0 +1,52 @@
+/* pages/logs/logs.wxss */
+page { background: #FFF8F0; font-family: -apple-system, sans-serif; }
+.container { padding: 20rpx; }
+
+.header { margin-bottom: 20rpx; }
+.page-title { font-size: 36rpx; font-weight: 600; color: #333; }
+
+.child-selector {
+  display: flex; align-items: center; background: #fff;
+  border-radius: 16rpx; padding: 20rpx; margin-bottom: 20rpx;
+}
+.avatar {
+  width: 70rpx; height: 70rpx; border-radius: 50%;
+  background: #FF9800; color: #fff; font-size: 30rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.info { flex: 1; margin-left: 16rpx; }
+.child-name { font-size: 30rpx; font-weight: 600; display: block; color: #333; }
+.child-sub { font-size: 24rpx; color: #999; }
+.arrow { font-size: 40rpx; color: #ccc; }
+
+.section { margin-bottom: 30rpx; }
+.section-title { font-size: 30rpx; font-weight: 600; color: #333; margin-bottom: 16rpx; }
+.empty { color: #999; font-size: 28rpx; text-align: center; padding: 40rpx; }
+
+.log-card {
+  display: flex; align-items: center; background: #fff;
+  border-radius: 12rpx; padding: 20rpx; margin-bottom: 12rpx;
+}
+.log-left { flex: 1; }
+.meal-type {
+  font-size: 26rpx; color: #FF9800; font-weight: 600; display: block;
+}
+.recipe-name { font-size: 28rpx; color: #333; display: block; }
+.log-time { font-size: 22rpx; color: #999; margin-right: 16rpx; }
+.delete-log { font-size: 40rpx; color: #ccc; }
+
+.add-section {
+  background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 30rpx;
+}
+.meal-picker, .recipe-select { margin-bottom: 16rpx; }
+.label { font-size: 28rpx; color: #666; display: block; margin-bottom: 8rpx; }
+.picker-val { font-size: 28rpx; color: #333; padding: 12rpx 0; }
+.notes-input {
+  font-size: 28rpx; border: 1px solid #eee; border-radius: 8rpx;
+  padding: 12rpx; margin: 16rpx 0;
+}
+.log-btn {
+  background: #FF9800; color: #fff; border: none; border-radius: 50rpx;
+  padding: 24rpx; font-size: 30rpx;
+}
+.log-btn::after { border: none; }

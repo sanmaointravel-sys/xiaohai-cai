@@ -1,0 +1,58 @@
+<!-- pages/logs/logs.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="page-title">🍽️ 饮食记录</text>
+  </view>
+
+  <view class="child-selector" bindtap="goToChildren">
+    <view class="avatar">{{currentChild ? currentChild.name[0] : '?'}}</view>
+    <view class="info">
+      <text class="child-name">{{currentChild ? currentChild.name : '请先选择孩子'}}</text>
+      <text class="child-sub">{{currentChild ? (currentChild.allergies.length + '项过敏') : '点击切换'}}</text>
+    </view>
+    <text class="arrow">›</text>
+  </view>
+
+  <!-- 今日记录 -->
+  <view class="section">
+    <view class="section-title">📅 今日记录</view>
+    <view wx:if="{{todayLogs.length === 0}}" class="empty">暂无记录</view>
+    <view wx:for="{{todayLogs}}" wx:key="id" class="log-card">
+      <view class="log-left">
+        <text class="meal-type">{{item.meal_type}}</text>
+        <text class="recipe-name">{{item.recipe_name || '自定义'}}</text>
+      </view>
+      <text class="log-time">{{item.logged_at}}</text>
+      <text class="delete-log" data-id="{{item.id}}" bindtap="deleteLog">×</text>
+    </view>
+  </view>
+
+  <!-- 添加记录 -->
+  <view class="add-section">
+    <view class="section-title">➕ 快速记录</view>
+    <picker class="meal-picker" mode="selector" range="{{mealTypes}}" bindchange="onMealTypeChange">
+      <view class="picker-val">{{selectedMealType || '选择餐次'}}</view>
+    </picker>
+    <view class="recipe-select">
+      <text class="label">选择菜谱：</text>
+      <picker mode="selector" range="{{recipes}}" range-key="name" bindchange="onRecipeChange">
+        <view class="picker-val">{{selectedRecipe ? selectedRecipe.name : '选择菜谱'}}</view>
+      </picker>
+    </view>
+    <input class="notes-input" placeholder="备注（可空）" bindinput="onNotesInput" />
+    <button class="log-btn" bindtap="addLog">记录</button>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="section">
+    <view class="section-title">📋 历史记录</view>
+    <view wx:for="{{historyLogs}}" wx:key="id" class="log-card history">
+      <view class="log-left">
+        <text class="meal-type">{{item.meal_type}}</text>
+        <text class="recipe-name">{{item.recipe_name || '自定义'}}</text>
+      </view>
+      <text class="log-time">{{item.logged_at}}</text>
+    </view>
+    <view wx:if="{{historyLogs.length === 0}}" class="empty">暂无历史记录</view>
+  </view>
+</view>

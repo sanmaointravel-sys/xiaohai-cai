@@ -1,0 +1,63 @@
+/* pages/index/index.wxss */
+page { background: #FFF8F0; font-family: -apple-system, sans-serif; }
+.container { padding: 20rpx; }
+
+.child-header { margin-bottom: 20rpx; }
+
+.child-selector {
+  display: flex; align-items: center;
+  background: #fff; border-radius: 16rpx; padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+}
+.child-avatar {
+  width: 80rpx; height: 80rpx; border-radius: 50%;
+  background: #FF9800; display: flex; align-items: center; justify-content: center;
+}
+.avatar-text { color: #fff; font-size: 36rpx; font-weight: bold; }
+.child-info { flex: 1; margin-left: 20rpx; }
+.child-name { font-size: 32rpx; font-weight: 600; display: block; color: #333; }
+.child-sub { font-size: 24rpx; color: #999; }
+.arrow { font-size: 40rpx; color: #ccc; }
+
+.illness-banner {
+  background: #FFF3E0; border-radius: 12rpx; padding: 16rpx 24rpx;
+  margin-top: 12rpx; display: flex; gap: 16rpx;
+  font-size: 26rpx; color: #E65100;
+}
+
+.loading { text-align: center; padding: 100rpx; color: #999; }
+
+.empty-state { text-align: center; padding: 120rpx 40rpx; }
+.empty-icon { font-size: 100rpx; display: block; margin-bottom: 20rpx; }
+.empty-text { font-size: 28rpx; color: #999; display: block; margin-bottom: 40rpx; }
+
+.primary-btn {
+  background: #FF9800; color: #fff; border: none; border-radius: 50rpx;
+  padding: 24rpx 60rpx; font-size: 30rpx;
+}
+.primary-btn::after { border: none; }
+
+.section { margin-bottom: 30rpx; }
+.section-title { display: flex; align-items: center; margin-bottom: 16rpx; }
+.title-icon { font-size: 32rpx; margin-right: 10rpx; }
+.title-text { font-size: 30rpx; font-weight: 600; color: #333; }
+
+.recipe-list { display: flex; flex-direction: column; gap: 16rpx; }
+.recipe-card {
+  background: #fff; border-radius: 16rpx; padding: 24rpx;
+  border-left: 6rpx solid;
+}
+.green-border { border-color: #4CAF50; }
+.yellow-border { border-color: #FFC107; }
+.red-border { border-color: #F44336; }
+.recipe-name { font-size: 30rpx; font-weight: 600; color: #333; display: block; }
+.recipe-meta { font-size: 24rpx; color: #999; margin-top: 6rpx; display: block; }
+.recipe-warn { font-size: 24rpx; color: #F57C00; margin-top: 8rpx; display: block; }
+.recipe-reason { font-size: 24rpx; color: #D32F2F; margin-top: 8rpx; display: block; }
+
+.footer-actions { text-align: center; margin-top: 20rpx; }
+.secondary-btn {
+  background: #fff; color: #FF9800; border: 2rpx solid #FF9800;
+  border-radius: 50rpx; padding: 20rpx 60rpx; font-size: 28rpx;
+}
+.secondary-btn::after { border: none; }

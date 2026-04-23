@@ -1,0 +1,36 @@
+<!-- pages/recipes/recipes.wxml -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索菜谱或食材..." bindinput="onSearch" />
+  </view>
+
+  <view wx:if="{{loading}}" class="loading"><text>加载中...</text></view>
+
+  <view class="recipe-count" wx:if="{{!loading}}">
+    <text>共 {{recipes.length}} 道菜谱</text>
+  </view>
+
+  <view class="recipe-list">
+    <view wx:for="{{recipes}}" wx:key="id" class="recipe-card"
+          bindtap="goDetail" data-id="{{item.id}}">
+      <view class="card-left">
+        <view class="recipe-icon">{{item.name[0]}}</view>
+      </view>
+      <view class="card-right">
+        <text class="recipe-name">{{item.name}}</text>
+        <text class="recipe-desc">{{item.description}}</text>
+        <view class="recipe-tags">
+          <text class="tag age">{{item.suitable_age}}</text>
+          <text class="tag diff">{{item.difficulty}}</text>
+          <text class="tag time">⏱ {{item.cooking_time}}分钟</text>
+        </view>
+        <text class="recipe-ing" wx:if="{{item.ingredients_text}}">🥗 {{item.ingredients_text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{recipes.length === 0 && !loading}}" class="empty">
+    <text>🔍 没有找到相关菜谱</text>
+  </view>
+</view>

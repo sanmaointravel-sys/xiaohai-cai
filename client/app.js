@@ -1,4 +1,6 @@
 // app.js
+// TODO: 把下面改成你电脑的局域网IP，比如 http://192.168.x.x:5000/api
+// 获取本机IP方法: Windows CMD输入 ipconfig，找到IPv4地址
 const API_BASE = 'http://localhost:5000/api';
 
 App({
